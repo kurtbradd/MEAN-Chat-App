@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js'></script>
+		<title>Chat App</title>
+	</head>
+	
+	<body ng-app="myApp">
+		<h1>GDG Waterloo Chat App</h1>
+		<div ng-controller='ChatCtrl'>
+			<input type="text" ng-model='userName' placeholder='Enter a username'>
+			<br>
+			<input type="text" ng-enter='sendMessage()' ng-model='message' placeholder='Enter your message here' size='50'></input>
+			<br>
+			<button size='100' ng-click='sendMessage()'>Submit</button>
+			<br>
+			<p>Filter Messages:
+			<input type="text" ng-model='filterText'>
+			<ul>
+				<li ng-repeat='text in messages | filter : filterText'>
+					<p>{{text.username}} - {{text.message}}</p>
+				</li>
+			</ul>
+
+		</div>
+		<script type='text/javascript' src='/socket.io/socket.io.js'></script>
+		<script type="text/javascript" src ="client.js"></script>
+	</body>
+</html>
